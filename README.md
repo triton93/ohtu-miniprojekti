@@ -5,5 +5,5 @@ ohtu-miniprojekti
 - Ensimmäiset luokat lisätty
 
 Jenkins:
-http://t-markolai.users.cs.helsinki.fi/jenkins/job/tomate/
+http://t-markolai.users.cs.helsinki.fi/jenkins/
 
