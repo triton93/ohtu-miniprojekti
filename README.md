@@ -5,7 +5,7 @@ ohtu-miniprojekti
 - Ensimmäiset luokat lisätty
 - Siistin BookReference-luokkaa
 - Periytin BookReferencen Reference-luokasta
-- Poistin BookReferenceRepository-luokan
+- Poistin BookReferenceRepository-luokan 
 
 Jenkins:
 http://t-markolai.users.cs.helsinki.fi/jenkins/
