@@ -20,8 +20,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class BookReference extends AbstractPersistable<Long>{
     
-    @NotNull
-    private List<String> authors;
+    @NotEmpty
+    private String authors;
     
     @NotEmpty
     private String title;
@@ -33,11 +33,11 @@ public class BookReference extends AbstractPersistable<Long>{
 //    @Digits(integer=4, fraction=0)
     private Integer year;
 
-    public List<String> getAuthors() {
+    public String getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<String> authors) {
+    public void setAuthors(String authors) {
         this.authors = authors;
     }
 
@@ -57,13 +57,15 @@ public class BookReference extends AbstractPersistable<Long>{
         this.publisher = publisher;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
+
+
     
     
     
