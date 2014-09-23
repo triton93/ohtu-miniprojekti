@@ -8,7 +8,9 @@ package tomate.domain;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
@@ -21,14 +23,15 @@ public class BookReference extends AbstractPersistable<Long>{
     @NotNull
     private List<String> authors;
     
-    @NotNull
+    @NotEmpty
     private String title;
     
-    @NotNull
+    @NotEmpty
     private String publisher;
     
     @NotNull
-    private int year;
+//    @Digits(integer=4, fraction=0)
+    private Integer year;
 
     public List<String> getAuthors() {
         return authors;
