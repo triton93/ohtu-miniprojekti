@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tomate.domain.BookReference;
-import tomate.domain.Reference;
 import tomate.repository.ReferenceRepository;
 
 /**
@@ -21,7 +20,7 @@ public class ReferenceController {
   private ReferenceRepository referenceRepository;
   
   @RequestMapping( "/references" )
-  public Reference findReference() {
+  public BookReference findReference() {
     
     // testataan jenkinssiä
     
