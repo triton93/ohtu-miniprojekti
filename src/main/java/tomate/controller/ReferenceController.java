@@ -21,14 +21,7 @@ public class ReferenceController {
   
   @RequestMapping( "/references" )
   public BookReference findReference() {
-    
-    // testataan jenkinssiä ....
-    
     return new BookReference();
-    
-    
-    
-    
   }
   
   
