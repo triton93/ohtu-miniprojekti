@@ -10,6 +10,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  */
 
 @Entity
-public class Reference extends AbstractPersistable<Long> {
+public abstract class Reference extends AbstractPersistable<Long> {
   
 }
