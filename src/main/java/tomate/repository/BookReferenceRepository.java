@@ -6,10 +6,13 @@
 
 package tomate.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import tomate.domain.BookReference;
+
 /**
  *
  * @author teeyoshi
  */
-public class BookReferenceRepository {
+public interface BookReferenceRepository extends JpaRepository<BookReference, Long>{
     
 }
