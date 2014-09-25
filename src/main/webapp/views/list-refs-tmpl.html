@@ -1,18 +1,23 @@
 
-<h4>Lähdeviitteet:</h4>
+<h1>References</h1>
 
-<table class="table table-condensed">
+<div data:ng-if="refs.length == 0" class="alert alert-info">There aren't any references added yet!</div>
+
+<table data:ng-if="refs.length != 0" class="table table-condensed">
     <tr>
+        <th>#</th>
         <th>Title</th>
         <th>Authors</th>
         <th>Publisher</th>
         <th>Year</th>
     </tr>
     <tr data:ng-repeat="ref in refs">
-        <td>{{ $index }}</td>
+        <td>{{ $index + 1 }}</td>
         <td>{{ ref.title }}</td>
         <td>{{ ref.authors }}</td>
         <td>{{ ref.publisher }}</td>
         <td>{{ ref.year }}</td>
+        <td><a href="#/{{ ref.id }}">Edit</a></td>
     </tr>
 </table>
+
