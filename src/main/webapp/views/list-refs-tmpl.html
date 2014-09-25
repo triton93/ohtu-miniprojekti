@@ -1,0 +1,18 @@
+
+<h4>Lähdeviitteet:</h4>
+
+<table class="table table-condensed">
+    <tr>
+        <th>Title</th>
+        <th>Authors</th>
+        <th>Publisher</th>
+        <th>Year</th>
+    </tr>
+    <tr data:ng-repeat="ref in refs">
+        <td>{{ $index }}</td>
+        <td>{{ ref.title }}</td>
+        <td>{{ ref.authors }}</td>
+        <td>{{ ref.publisher }}</td>
+        <td>{{ ref.year }}</td>
+    </tr>
+</table>

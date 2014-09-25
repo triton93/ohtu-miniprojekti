@@ -1,0 +1,41 @@
+﻿
+        
+<h2>Kirja-lähdeviitteen lisäys</h2>
+
+<div class="lomake">
+    <form class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="author">Author/Editor</label>
+
+            <div class="controls">
+                <input type="text" id="author" placeholder="Author/Editor" data-ng:model="ref.authors">
+            </div>
+
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="title">Title</label>
+            <div class="controls">
+                <input type="text" id="title" placeholder="Title" data-ng:model="ref.title">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="publisher">Publisher</label>
+            <div class="controls">
+                <input type="text" id="publisher" placeholder="Publisher" data-ng:model="ref.publisher">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="year">Year</label>
+            <div class="controls">
+                <input type="text" id="year" placeholder="Year" data-ng:model="ref.year">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" data-ng:click="addRef( ref )" class="btn">Submit</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+       
