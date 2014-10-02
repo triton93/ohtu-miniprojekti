@@ -7,3 +7,8 @@
 h1 {
     margin-bottom: 30px;
 }
+
+dd {
+    text-indent: 20px;
+    margin-bottom: 5px;
+}

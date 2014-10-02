@@ -12,7 +12,7 @@
         <th>Year</th>
     </tr>
     <tr data:ng-repeat="ref in refs">
-        <td>{{ $index + 1 }}</td>
+        <td><a href='#/preview/{{ ref.id }}' target='_blank'>{{ $index + 1 }}</a></td>
         <td>{{ ref.title }}</td>
         <td>{{ ref.authors }}</td>
         <td>{{ ref.publisher }}</td>

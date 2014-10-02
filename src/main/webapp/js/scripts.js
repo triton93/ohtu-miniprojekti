@@ -3,7 +3,7 @@ var app = angular.module( 'app', [ 'ui.router' ] );
 
 app.config(function ( $stateProvider ) {
   
-  var views = {
+  var commonViews = {
     addOrEditView: {
       templateUrl: 'views/add-ref-tmpl.html',
       controller: 'RefAddOrUpdateCtrl'
@@ -17,17 +17,44 @@ app.config(function ( $stateProvider ) {
   $stateProvider
     .state( 'index', {
       url: '',
-      views: views
+      views: commonViews
     })
     .state( 'edit', {
       url: '/{id}',
-      views: views
+      views: commonViews
+    })
+    .state( 'preview', {
+      url: '/preview/{id}',
+      views: {
+        previewView: {
+          templateUrl: '/views/preview-tmpl.html',
+          controller: 'PreviewCtrl',
+          resolve: {
+            reference: function ( $stateParams, $http ) {
+              return $http({ 
+                url: '/api/references/' + $stateParams.id, 
+                method: 'GET' 
+              }).success(function ( resp ) {
+                return resp;
+              });
+            },
+            bibtex: function ( $stateParams, $http ) {
+              return $http({ 
+                url: '/api/bibtex/' + $stateParams.id, 
+                method: 'GET' 
+              }).success(function ( resp ) {
+                return resp;
+              });
+            }
+          }
+        }
+      }
     });
 
 });
 
 app.controller( 'RefAddOrUpdateCtrl', 
-  function ( $scope, $http, $state, $window ) {
+  function ( $scope, $http, $state ) {
   
     var isEdit = angular.isDefined( $state.params.id );
     $scope.isEdit = isEdit;
@@ -44,7 +71,6 @@ app.controller( 'RefAddOrUpdateCtrl',
 
     }
 
-
     $scope.saveRef = function ( ref ) {
 
       if ( isEdit ) {
@@ -59,16 +85,10 @@ app.controller( 'RefAddOrUpdateCtrl',
       .success(function () {
 
         if ( isEdit ) {
-          
-           $state.transitionTo ('index', {}, { location: true });
-           $window.alert( "Reference has been added! Thank you!" );
-           
+          $state.transitionTo ('index', {}, { location: true });
         } 
         else {
-          
           $state.go( $state.current.name, $state.params, { reload: true } );
-          $window.alert( "Reference has been saved! Thank you!" );
-        
         }
       
       });
@@ -86,4 +106,9 @@ app.controller( 'RefListCtrl', function ( $scope, $http ) {
     $scope.refs = refs;
   });
 
+});
+
+app.controller( 'PreviewCtrl', function ( $scope, bibtex, reference ) {
+  $scope.ref = reference.data;
+  $scope.bibtex = bibtex.data;
 });
