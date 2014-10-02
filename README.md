@@ -19,5 +19,8 @@ http://ohtu.jamo.io/job/Tomate
 Jenkins:
 http://t-markolai.users.cs.helsinki.fi/jenkins/
 
+Burndown:
+https://docs.google.com/spreadsheets/d/1qzfupat5heZyhmPr1uSpTzPETHIgr5-v3BDBUUkeYQ0/edit?usp=sharing
+
 
 
