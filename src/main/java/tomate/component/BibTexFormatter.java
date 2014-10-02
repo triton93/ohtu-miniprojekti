@@ -52,7 +52,7 @@ public class BibTexFormatter {
       value = "\"" + value + "\"";
     }
     
-    return "\n  " + key + "  =  " + value + ( comma ? "," : "" );
+    return "\n\t" + key + "  =  " + value + ( comma ? "," : "" );
     
   }
   
