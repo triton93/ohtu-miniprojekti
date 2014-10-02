@@ -18,10 +18,10 @@ Definition of Done
 
 Kaikkien user storien tulee olla:
 
--analysoitu
--suunniteltu
--ohjelmoitu
--testattu
--testaus automatisoitu 
--integroitu muuhun ohjelmistoon
+- analysoitu
+- suunniteltu
+- ohjelmoitu
+- testattu
+- testaus automatisoitu 
+- integroitu muuhun ohjelmistoon
 
