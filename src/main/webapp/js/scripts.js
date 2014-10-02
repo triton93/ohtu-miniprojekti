@@ -96,7 +96,7 @@ app.controller( 'RefAddOrUpdateCtrl',
 
 });
 
-app.controller( 'RefListCtrl', function ( $scope, $http ) {
+app.controller( 'RefListCtrl', function ( $scope, $http, $state ) {
         
   $http({
     url: '/api/references',
@@ -105,6 +105,19 @@ app.controller( 'RefListCtrl', function ( $scope, $http ) {
   .success(function ( refs ) {
     $scope.refs = refs;
   });
+  
+  $scope.deleteRef = function ( ref ) {
+      
+    $http({
+      url: '/api/references/' + ref.id,
+      method: 'DELETE'
+    })
+    .success(function () {
+      $state.go( $state.current.name, $state.params, { reload: true } );
+    });
+      
+   };
+  
 
 });
 
