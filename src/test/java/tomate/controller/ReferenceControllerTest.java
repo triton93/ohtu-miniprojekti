@@ -99,9 +99,10 @@ public class ReferenceControllerTest {
         ref1.setYear(2001);
         referepo.save(ref1);
         
-        Reference deletedRef = referenceController.delete(ref1.getId());
         
+        assertEquals(ref1, referenceController.delete(ref1.getId()));
         assertEquals(1, referenceController.list().size());
+        
         
         
     }
