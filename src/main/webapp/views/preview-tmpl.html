@@ -8,8 +8,12 @@
   <dt>Author</dt>
   <dd>{{ ref.authors }}</dd>
   
-  <dt>Publisher</dt>
-  <dd>{{ ref.publisher }}</dd>
+  <dt data:ng-if="ref.type == 1">Publisher</dt>
+  <dt data:ng-if="ref.type == 2">Journal</dt>
+  <dd data:ng-if="ref.type != 3">{{ ref.publisher }}</dd>
+  
+  <dt data:ng-if="ref.type == 3">Book Title</dt>
+  <dd data:ng-if="ref.type == 3">{{ ref.booktitle }}</dd>
   
   <dt>Year</dt>
   <dd>{{ ref.year }}</dd>
@@ -20,3 +24,5 @@
 <h4>BibTeX:</h4>
 
 <code style="white-space: pre-line;">{{ bibtex }}</code>
+
+<br><br><a href="/api/bibtex/{{ ref.id }}/download">Download Reference</a>

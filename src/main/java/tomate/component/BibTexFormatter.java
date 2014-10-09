@@ -15,11 +15,37 @@ public class BibTexFormatter {
   
   public String format( Reference ref ) {
     
-    StringBuilder sb = new StringBuilder( "@Book{" );
+    String type = "";
+    
+    switch( ref.getType() ) {
+      case Reference.BOOK:
+        type = "@Book{";
+        break;
+      case Reference.ARTICLE:
+        type = "@Article{";
+        break;
+      case Reference.INPROCEEDINGS: 
+        type = "@Inproceedings{";
+        break;
+    }
+    
+    StringBuilder sb = new StringBuilder( type );
+    
     sb.append( formatRef( ref.getAuthors() ) ).append( "," );
     sb.append( keyValuePair( "author", formatUmlauts( ref.getAuthors() ), true, true ) );
     sb.append( keyValuePair( "title", formatUmlauts( ref.getTitle() ), true, true ) );
-    sb.append( keyValuePair( "publisher", formatUmlauts( ref.getPublisher() ), true, true ) );
+    
+    if ( ref.getType() == Reference.BOOK ) {
+      sb.append( keyValuePair( "publisher", formatUmlauts( ref.getPublisher() ), true, true ) );
+    }
+    else if ( ref.getType() == Reference.ARTICLE ) {
+      sb.append( keyValuePair( "journal", formatUmlauts( ref.getPublisher() ), true, true ) );
+    }
+    
+    if ( ref.getType() == Reference.INPROCEEDINGS ) {
+      sb.append( keyValuePair( "booktitle", formatUmlauts( ref.getBooktitle() ), true, true ) );
+    }
+    
     sb.append( keyValuePair( "year", String.valueOf( ref.getYear() ), false, false ) );
     sb.append( "\n}" );
     
@@ -65,5 +91,5 @@ public class BibTexFormatter {
     
   }
   
-  
+
 }

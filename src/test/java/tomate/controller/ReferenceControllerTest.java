@@ -29,18 +29,21 @@ public class ReferenceControllerTest {
 
     @Test
     public void retrieveReference() {
-        referepo.deleteAll();
-        Reference ref = new Reference();
-        ref.setAuthors("jukka");
-        ref.setPublisher("pekka");
-        ref.setTitle("erkki");
-        ref.setYear(2000);
-        referepo.save(ref);
+      
+      referepo.deleteAll();
+      Reference ref = new Reference();
+      
+      ref.setType( Reference.BOOK );
+      ref.setAuthors("jukka");
+      ref.setPublisher("pekka");
+      ref.setTitle("erkki");
+      ref.setYear(2000);
+      referepo.save(ref);
 
-        Reference retrievedRef = referenceController.retrieve(ref.getId());
-        
-        assertEquals(1, referepo.count());
-        assertEquals(retrievedRef, referepo.findOne(ref.getId()));
+      Reference retrievedRef = referenceController.retrieve(ref.getId());
+
+      assertEquals(1, referepo.count());
+      assertEquals(retrievedRef, referepo.findOne(ref.getId()));
     
     }
     
@@ -48,6 +51,8 @@ public class ReferenceControllerTest {
     public void repositorySaves() {
         referepo.deleteAll();
         Reference ref = new Reference();
+        
+        ref.setType( Reference.ARTICLE );
         ref.setAuthors("jukka");
         ref.setPublisher("pekka");
         ref.setTitle("erkki");
@@ -63,6 +68,7 @@ public class ReferenceControllerTest {
     public void listingAllReferences(){
         referepo.deleteAll();
         Reference ref = new Reference();
+        ref.setType( Reference.BOOK );
         ref.setAuthors("jukka");
         ref.setPublisher("pekka");
         ref.setTitle("erkki");
@@ -70,6 +76,7 @@ public class ReferenceControllerTest {
         referepo.save(ref);
         
         Reference ref1 = new Reference();
+        ref1.setType( Reference.BOOK );
         ref1.setAuthors("jukka1");
         ref1.setPublisher("pekka1");
         ref1.setTitle("erkki1");
@@ -79,13 +86,14 @@ public class ReferenceControllerTest {
         List<Reference> refs = new ArrayList<>();
         refs.add(ref); refs.add(ref1);
         
-        assertEquals(refs, referenceController.list());
+        assertEquals(refs, referenceController.list( Reference.BOOK ));
     }
     
     @Test
     public void deleteReferenceFromRepo(){
         referepo.deleteAll();
         Reference ref = new Reference();
+        ref.setType( Reference.INPROCEEDINGS);
         ref.setAuthors("jukka");
         ref.setPublisher("pekka");
         ref.setTitle("erkki");
@@ -93,6 +101,7 @@ public class ReferenceControllerTest {
         referepo.save(ref);
         
         Reference ref1 = new Reference();
+        ref1.setType( Reference.INPROCEEDINGS );
         ref1.setAuthors("jukka1");
         ref1.setPublisher("pekka1");
         ref1.setTitle("erkki1");
@@ -101,7 +110,7 @@ public class ReferenceControllerTest {
         
         
         assertEquals(ref1, referenceController.delete(ref1.getId()));
-        assertEquals(1, referenceController.list().size());
+        assertEquals(1, referenceController.list( Reference.INPROCEEDINGS ).size());
         
         
         

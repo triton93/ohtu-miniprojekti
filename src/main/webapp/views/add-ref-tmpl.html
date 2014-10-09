@@ -3,108 +3,47 @@
 <h1 data:ng-if="isEdit">Edit Reference</h1>
 
 
-<div>
-    <form>
-        <p>Choose reference type</p>
-        <select ng-model="state">
-            <option value="book">Book</option>
-            <option value="inproceedings">Proceedings</option>
-            <option value="article">Article</option>
+
+<form>
+    
+    <div class="form-group">
+        <label for="type">Reference Type</label>
+        <select id="type" class="form-control" data:ng-init="ref.type = 1" data:ng-model="ref.type">
+            <option data:ng-selected="ref.type == 1" value="1">Book</option>
+            <option data:ng-selected="ref.type == 2" value="2">Article</option>
+            <option data:ng-selected="ref.type == 3" value="3">Proceedings</option>
         </select>
-    </form>
-</div>
+    </div>
+    
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" data:ng-model="ref.title">
+    </div>
+    
+    <div data:ng-if="ref.type == 3" class="form-group">
+        <label for="booktitle">Book Title</label>
+        <input type="text" class="form-control" id="booktitle" data:ng-model="ref.booktitle">
+    </div>
+    
+    <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" class="form-control" id="author" data:ng-model="ref.authors">
+    </div>
+
+    <div data:ng-if="ref.type != 3" class="form-group">
+        <label data:ng-if="ref.type == 1" for="publisher">Publisher</label>
+        <label data:ng-if="ref.type == 2" for="publisher">Journal</label>
+        <input type="text" class="form-control" id="publisher" data:ng-model="ref.publisher">
+    </div>
+
+    <div class="form-group">
+        <label for="year">Year</label>
+        <input type="text" class="form-control" id="year" data:ng-model="ref.year">
+    </div>
+
+    <button type="button" data:ng-click="saveRef( ref )" class="btn btn-default">Save</button>
+
+</form>
 
 
 
-
-
-
-<div class="lomake" ng-hide="state!=='book'">
-
-    <form>
-        <h2>Book</h2>
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" data:ng-model="ref.title">
-        </div>
-
-        <div class="form-group">
-            <label for="author">Author</label>
-            <input type="text" class="form-control" id="author" data:ng-model="ref.authors">
-        </div>
-
-        <div class="form-group">
-            <label for="publisher">Publisher</label>
-            <input type="text" class="form-control" id="publisher" data:ng-model="ref.publisher">
-        </div>
-
-        <div class="form-group">
-            <label for="year">Year</label>
-            <input type="text" class="form-control" id="year" data:ng-model="ref.year">
-        </div>
-
-        <button type="button" data:ng-click="saveRef( ref )" class="btn btn-default">Save</button>
-
-    </form>
-</div>
-
-
-<div class="lomake" ng-hide="state!=='article'">
-
-    <form>
-        <h2>Article</h2>
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" data:ng-model="ref.title">
-        </div>
-
-        <div class="form-group">
-            <label for="author">Author</label>
-            <input type="text" class="form-control" id="author" data:ng-model="ref.authors">
-        </div>
-
-
-        
-        <div class="form-group">
-            <label for="journal">Journal</label>
-            <input type="text" class="form-control" id="journal" data:ng-model="ref.journal">
-        </div>
-
-        <div class="form-group">
-            <label for="year">Year</label>
-            <input type="text" class="form-control" id="year" data:ng-model="ref.year">
-        </div>
-
-        <button type="button" data:ng-click="saveRef( ref )" class="btn btn-default">Save</button>
-
-    </form>
-</div>
-
-<div class="lomake" ng-hide="state!=='inproceedings'">
-
-    <form>
-        <h2>In proceedings</h2>
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" data:ng-model="ref.title">
-        </div>
-
-        <div class="form-group">
-            <label for="author">Author</label>
-            <input type="text" class="form-control" id="author" data:ng-model="ref.authors">
-        </div>
-
-        <div class="form-group">
-            <label for="booktitle">Book title</label>
-            <input type="text" class="form-control" id="booktitle" data:ng-model="ref.booktitle">
-        </div>
-
-        <div class="form-group">
-            <label for="year">Year</label>
-            <input type="text" class="form-control" id="year" data:ng-model="ref.year">
-        </div>
-
-        <button type="button" data:ng-click="saveRef( ref )" class="btn btn-default">Save</button>
-
-    </form>
-</div>

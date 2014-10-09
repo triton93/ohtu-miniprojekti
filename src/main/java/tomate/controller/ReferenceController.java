@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import tomate.component.BibTexFormatter;
 import tomate.domain.Reference;
 import tomate.repository.ReferenceRepository;
 
@@ -36,8 +35,8 @@ public class ReferenceController {
   }
   
   @RequestMapping( method = RequestMethod.GET )
-  public List<Reference> list() {
-    return this.referenceRepository.findAll();
+  public List<Reference> list( @RequestParam( "type" ) Integer type ) {
+    return this.referenceRepository.findByType( type );
   }
   
   @RequestMapping( value = "/{id}", method = RequestMethod.DELETE )
