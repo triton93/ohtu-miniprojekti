@@ -1,5 +1,7 @@
 ohtu-miniprojekti
 =================
+Projektin raportti: https://docs.google.com/document/d/1UHMeeTmW6JXdvF0-xPVUQue6ICT5sFIWKGv7dH7WsAQ/edit?usp=sharing
+=================
 - Spring Boot konfiguroitu
 - EasyB konfiguroitu
 - Ensimmäiset luokat lisätty
